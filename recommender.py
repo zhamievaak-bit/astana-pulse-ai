@@ -5,6 +5,11 @@ def recommend_places(budget, interests, available_time):
 
     recommendations = []
 
+    normalized_interests = [
+        str(interest).strip().lower()
+        for interest in interests
+    ]
+
     for place in places:
 
         if place["price"] > budget:
@@ -13,13 +18,26 @@ def recommend_places(budget, interests, available_time):
         if place["duration"] > available_time:
             continue
 
-        if interests:
+        place_tags = [
+            str(tag).strip().lower()
+            for tag in place["tags"]
+        ]
+
+        if normalized_interests:
+
             if not any(
-                interest in place["tags"]
-                for interest in interests
+                interest in place_tags
+                for interest in normalized_interests
             ):
                 continue
 
         recommendations.append(place)
+
+    recommendations.sort(
+        key=lambda place: (
+            place["price"],
+            place["duration"]
+        )
+    )
 
     return recommendations
