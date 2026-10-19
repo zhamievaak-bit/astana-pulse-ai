@@ -5,7 +5,31 @@ st.set_page_config(
     page_icon="🏙️",
     layout="wide"
 )
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg, #0B1020, #151C35);
+}
 
+h1, h2, h3 {
+    color: #FFFFFF;
+}
+
+div.stButton > button {
+    background: linear-gradient(90deg, #7C3AED, #2563EB);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+}
+
+div.stButton > button:hover {
+    color: white;
+    border: 1px solid #A78BFA;
+}
+</style>
+""", unsafe_allow_html=True)
 st.title("🏙️ ASTANA PULSE AI")
 
 st.subheader(
